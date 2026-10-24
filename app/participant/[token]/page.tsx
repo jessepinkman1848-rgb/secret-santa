@@ -106,11 +106,11 @@ const isGerman = participant.language === "de";
 <div
   style={{
     textAlign: "center",
-    fontSize: "3rem",
+    fontSize: "2rem",
     marginBottom: "20px",
   }}
 >
-  🎅 🎄 🎁 🦌 ❄️
+  🎅 🎁 🦌 ❄️ 🎄
 </div>
 
       <h2
@@ -150,7 +150,7 @@ const isGerman = participant.language === "de";
         <p>{isGerman ? "Wunsch 2" : "Souhait 2"}</p>
         <input
   value={wish2}
-  onChange={(e) => setWish1(e.target.value)}
+  onChange={(e) => setWish2(e.target.value)}
   style={{
     width: "100%",
     padding: "12px",
@@ -163,7 +163,7 @@ const isGerman = participant.language === "de";
         <p>{isGerman ? "Wunsch 3" : "Souhait 3"}</p>
         <input
   value={wish3}
-  onChange={(e) => setWish1(e.target.value)}
+  onChange={(e) => setWish3(e.target.value)}
   style={{
     width: "100%",
     padding: "12px",
