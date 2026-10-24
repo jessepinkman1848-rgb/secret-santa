@@ -137,22 +137,22 @@ if (incomplete.length > 0) {
 </p>
 
 <a
-  href={`https://secret-santa-1-pi.vercel.app/participant/${p.participant_token}`}
+  href={`https://secret-santa-zeta-three.vercel.app/participant/${p.participant_token}`}
   target="_blank"
   rel="noreferrer"
 >
-  {`https://secret-santa-1-pi.vercel.app/participant/${p.participant_token}`}
+  {`https://secret-santa-zeta-three.vercel.app/participant/${p.participant_token}`}
 </a>
 
 <br />
 <br />
 
           <a
-  href={`https://secret-santa-1-pi.vercel.app/s/${p.secret_token}`}
+  href={`https://secret-santa-zeta-three.vercel.app/s/${p.secret_token}`}
   target="_blank"
   rel="noreferrer"
 >
-  {`https://secret-santa-1-pi.vercel.app/s/${p.secret_token}`}
+  {`https://secret-santa-zeta-three.vercel.app/s/${p.secret_token}`}
 </a>
 
           {" "}
