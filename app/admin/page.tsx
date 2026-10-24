@@ -133,7 +133,7 @@ if (incomplete.length > 0) {
 
           <br />
           <p>
-  <strong>FORMULAIRE V4 TEST :</strong>
+  <strong>Formulaire souhaits :</strong>
 </p>
 
 <a
