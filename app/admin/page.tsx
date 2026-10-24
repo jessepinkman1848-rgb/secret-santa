@@ -133,48 +133,48 @@ if (incomplete.length > 0) {
 
           <br />
           <p>
-  <strong>Formulaire souhaits :</strong>
+  <strong>FORMULAIRE V4 TEST :</strong>
 </p>
 
 <a
-  href={`http://localhost:3000/participant/${p.participant_token}`}
+  href={`https://secret-santa-1-pi.vercel.app/participant/${p.participant_token}`}
   target="_blank"
   rel="noreferrer"
 >
-  {`http://localhost:3000/participant/${p.participant_token}`}
+  {`https://secret-santa-1-pi.vercel.app/participant/${p.participant_token}`}
 </a>
 
 <br />
 <br />
 
           <a
-  href={`http://localhost:3000/s/${p.secret_token}`}
+  href={`https://secret-santa-1-pi.vercel.app/s/${p.secret_token}`}
   target="_blank"
   rel="noreferrer"
 >
-  {`http://localhost:3000/s/${p.secret_token}`}
+  {`https://secret-santa-1-pi.vercel.app/s/${p.secret_token}`}
 </a>
 
           {" "}
 
           <button
-            onClick={() =>
-              navigator.clipboard.writeText(
-                `http://localhost:3000/s/${p.secret_token}`
-              )
-            }
-            style={{
-              background: "#b91c1c",
-              color: "white",
-              border: "none",
-              padding: "8px 14px",
-              borderRadius: "8px",
-              cursor: "pointer",
-              marginLeft: "10px",
-            }}
-          >
-            📋 Copier
-          </button>
+  onClick={() =>
+    navigator.clipboard.writeText(
+      `https://secret-santa-1-pi.vercel.app/participant/${p.participant_token}`
+    )
+  }
+  style={{
+    background: "#b91c1c",
+    color: "white",
+    border: "none",
+    padding: "8px 14px",
+    borderRadius: "8px",
+    cursor: "pointer",
+    marginLeft: "10px",
+  }}
+>
+  📋 Copier
+</button>
         </div>
       ))}
     </main>
