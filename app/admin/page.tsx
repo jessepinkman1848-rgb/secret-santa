@@ -19,6 +19,18 @@ export default function AdminPage() {
     setLinks(data || []);
   }
 
+  async function sendInvitations() {
+    const response = await fetch("/api/send-invitation", {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      alert("✅ Invitations envoyées");
+    } else {
+      alert("❌ Erreur lors de l'envoi");
+    }
+  }
+
   async function handleDraw() {
     const { data: participants, error } = await supabase
       .from("participants")
@@ -33,18 +45,19 @@ export default function AdminPage() {
       alert("Pas assez de participants");
       return;
     }
-const incomplete = participants.filter(
-  (p) => !p.wish1 || !p.wish2 || !p.wish3
-);
 
-if (incomplete.length > 0) {
-  alert(
-    `${incomplete.length} participant(s) n'ont pas rempli leurs souhaits`
-  );
-  return;
-}
+    const incomplete = participants.filter(
+      (p) => !p.wish1 || !p.wish2 || !p.wish3
+    );
+
+    if (incomplete.length > 0) {
+      alert(
+        `${incomplete.length} participant(s) n'ont pas rempli leurs souhaits`
+      );
+      return;
+    }
+
     const shuffled = [...participants];
-
     shuffled.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < shuffled.length; i++) {
@@ -101,6 +114,22 @@ if (incomplete.length > 0) {
         🎲 Faire le tirage
       </button>
 
+      <button
+        onClick={sendInvitations}
+        style={{
+          background: "#2563eb",
+          color: "white",
+          border: "none",
+          padding: "12px 20px",
+          borderRadius: "8px",
+          cursor: "pointer",
+          fontWeight: "bold",
+          marginLeft: "10px",
+        }}
+      >
+        📧 TEST BOUTON EMAIL V2
+      </button>
+
       <hr style={{ margin: "30px 0" }} />
 
       <h2>Liens à envoyer</h2>
@@ -126,12 +155,11 @@ if (incomplete.length > 0) {
           </h3>
 
           <p>
-  {p.wish1 && p.wish2 && p.wish3
-    ? "✅ Souhaits remplis"
-    : "❌ Souhaits manquants"}
-</p>
+            {p.wish1 && p.wish2 && p.wish3
+              ? "✅ Souhaits remplis"
+              : "❌ Souhaits manquants"}
+          </p>
 
-          <br />
           <p>
   <strong>Formulaire souhaits :</strong>
 </p>
@@ -147,7 +175,11 @@ if (incomplete.length > 0) {
 <br />
 <br />
 
-          <a
+<p>
+  <strong>Résultat :</strong>
+</p>
+
+<a
   href={`https://secret-santa-zeta-three.vercel.app/s/${p.secret_token}`}
   target="_blank"
   rel="noreferrer"
@@ -155,12 +187,12 @@ if (incomplete.length > 0) {
   {`https://secret-santa-zeta-three.vercel.app/s/${p.secret_token}`}
 </a>
 
-          {" "}
+{" "}
 
-          <button
+<button
   onClick={() =>
     navigator.clipboard.writeText(
-      `https://secret-santa-1-pi.vercel.app/participant/${p.participant_token}`
+      `https://secret-santa-zeta-three.vercel.app/participant/${p.participant_token}`
     )
   }
   style={{
