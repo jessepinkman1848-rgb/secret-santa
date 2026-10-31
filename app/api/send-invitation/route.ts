@@ -15,19 +15,20 @@ export async function POST() {
     .select("*");
 
   if (error) {
+    console.error(error);
+
     return NextResponse.json(
       { error: error.message },
       { status: 500 }
     );
   }
 
-  for (const p of participants || []) {
+  const resend = getResend();
 
-  if (p.email !== "ton.email@domaine.com") {
-    continue;
-  }
-    const url =
-  `https://secret-santa-zeta-three.vercel.app/participant/${p.participant_token}`;
+  for (const p of participants || []) {
+    console.log("Sending to:", p.email);
+
+    const url = `https://secret-santa-zeta-three.vercel.app/participant/${p.participant_token}`;
 
     const subject =
       p.language === "de"
@@ -48,13 +49,15 @@ export async function POST() {
           <p><a href="${url}">${url}</a></p>
           <p>À bientôt 🎁</p>
         `;
-const resend = getResend();
-    await resend.emails.send({
+
+    const result = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: p.email,
       subject,
       html,
     });
+
+    console.log("Resend result:", result);
   }
 
   return NextResponse.json({
