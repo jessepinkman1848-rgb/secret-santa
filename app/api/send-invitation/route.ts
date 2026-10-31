@@ -8,6 +8,8 @@ const supabase = createClient(
 );
 
 export async function POST() {
+  console.log("SEND INVITATION API CALLED");
+
   const { data: participants, error } = await supabase
     .from("participants")
     .select("*");
@@ -20,6 +22,10 @@ export async function POST() {
   }
 
   for (const p of participants || []) {
+
+  if (p.email !== "ton.email@domaine.com") {
+    continue;
+  }
     const url =
   `https://secret-santa-zeta-three.vercel.app/participant/${p.participant_token}`;
 
