@@ -127,7 +127,7 @@ export default function AdminPage() {
           marginLeft: "10px",
         }}
       >
-        📧 TEST BOUTON EMAIL V2
+        📧 Envoyer les invitations
       </button>
 
       <hr style={{ margin: "30px 0" }} />
